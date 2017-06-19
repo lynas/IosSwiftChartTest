@@ -10,7 +10,7 @@ import UIKit
 import Charts
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var barChartView: BarChartView!
     
     var months: [String]!
@@ -19,11 +19,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
+        months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"]
+        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0]
         
         setChart(dataPoints: months, values: unitsSold)
         
@@ -33,9 +33,9 @@ class ViewController: UIViewController {
     func setChart(dataPoints: [String], values: [Double]) {
         barChartView.noDataText = "You need to provide data for the chart."
         var dataEntries: [BarChartDataEntry] = []
-        
+        let marker : [Double] = [100, 200, 300, 400, 500, 600, 700, 800]
         for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(x: values[i], y: Double(i))
+            let dataEntry = BarChartDataEntry(x: values[i], y: marker[i])
             dataEntries.append(dataEntry)
         }
         let c1 = UIColor(hex: 0x3EC1C1)
@@ -44,13 +44,17 @@ class ViewController: UIViewController {
         let c4 = UIColor(hex: 0x005C75)
         
         let chartDataSet = BarChartDataSet(values: dataEntries, label: nil)
+        chartDataSet.form = .empty
         chartDataSet.colors = [c1, c2, c3, c4]
         let chartData = BarChartData(dataSet: chartDataSet)
         barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
         barChartView.data = chartData
+        barChartView.chartDescription = nil
+        
+        
     }
-
-
+    
+    
 }
 
 extension UIColor {
