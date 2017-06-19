@@ -12,6 +12,7 @@ import Charts
 class ViewController: UIViewController {
     
     @IBOutlet weak var barChartView: BarChartView!
+    @IBOutlet weak var pieChartLeft: PieChartView!
     
     var months: [String]!
     
@@ -26,7 +27,31 @@ class ViewController: UIViewController {
         let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0]
         
         setChart(dataPoints: months, values: unitsSold)
+        setPieChartLeft(dataPoints: months, values: unitsSold)
         
+    }
+    
+    
+    func setPieChartLeft(dataPoints: [String], values: [Double]) {
+        pieChartLeft.noDataText = "You need to provide data for the chart."
+        var dataEntries: [PieChartDataEntry] = []
+        for i in 0..<dataPoints.count {
+            let dataEntry = PieChartDataEntry(value: values[i])
+            dataEntries.append(dataEntry)
+        }
+        let c1 = UIColor(hex: 0x3EC1C1)
+        let c2 = UIColor(hex: 0x209999)
+        let c3 = UIColor(hex: 0x093B64)
+        let c4 = UIColor(hex: 0x005C75)
+        
+        let chartDataSet = PieChartDataSet(values: dataEntries, label: nil)
+        chartDataSet.form = .empty
+        chartDataSet.colors = [c1, c2, c3, c4]
+        let chartData = PieChartData(dataSet: chartDataSet)
+        pieChartLeft.transparentCircleColor = nil
+        pieChartLeft.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+        pieChartLeft.data = chartData
+        pieChartLeft.chartDescription = nil
     }
     
     

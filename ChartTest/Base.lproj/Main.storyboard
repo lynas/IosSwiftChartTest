@@ -22,23 +22,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AyM-wR-N3U" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="228" width="375" height="210"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="210"/>
                                 <color key="backgroundColor" red="0.44705882352941173" green="0.75686274509803919" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="210" id="eZ8-SZ-LiG"/>
+                                    <constraint firstAttribute="height" constant="210" id="lWR-QZ-0aR"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Isf-9g-hRV" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="4" y="467" width="180" height="180"/>
+                                <color key="backgroundColor" red="0.077986828982830048" green="0.4277082085609436" blue="0.49925988912582397" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="CSS-cp-5GL"/>
+                                    <constraint firstAttribute="width" constant="180" id="gLr-5l-jop"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0PD-Ma-F51" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="191" y="467" width="180" height="180"/>
+                                <color key="backgroundColor" red="0.067349247634410858" green="0.43171846866607666" blue="0.50705748796463013" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="1yB-gf-1QL"/>
+                                    <constraint firstAttribute="height" constant="180" id="FVd-jj-F1J"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.066666666666666666" green="0.50196078431372548" blue="0.55686274509803924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.44705882352941173" green="0.75686274509803919" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="AyM-wR-N3U" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6oK-mS-ygV"/>
-                            <constraint firstItem="AyM-wR-N3U" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="KSX-0Z-fSx"/>
-                            <constraint firstItem="AyM-wR-N3U" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RMj-yG-nu6"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0PD-Ma-F51" secondAttribute="bottom" constant="20" id="Obl-Fl-Q0j"/>
+                            <constraint firstItem="Isf-9g-hRV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="4" id="Q2D-e1-o63"/>
+                            <constraint firstItem="AyM-wR-N3U" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZUV-xA-Sxj"/>
+                            <constraint firstAttribute="trailing" secondItem="0PD-Ma-F51" secondAttribute="trailing" constant="4" id="fPz-4S-dt3"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Isf-9g-hRV" secondAttribute="bottom" constant="20" id="mGd-J9-5a7"/>
+                            <constraint firstItem="AyM-wR-N3U" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="nzp-yK-5ml"/>
+                            <constraint firstAttribute="trailing" secondItem="AyM-wR-N3U" secondAttribute="trailing" id="tGp-zL-yFN"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="barChartView" destination="AyM-wR-N3U" id="U3h-3o-Jx0"/>
+                        <outlet property="pieChartLeft" destination="Isf-9g-hRV" id="1LK-CG-EZw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
