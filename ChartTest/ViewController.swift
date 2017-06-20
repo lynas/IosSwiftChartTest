@@ -47,12 +47,34 @@ class ViewController: UIViewController {
         let chartDataSet = PieChartDataSet(values: dataEntries, label: nil)
         chartDataSet.form = .empty
         chartDataSet.colors = [c1, c2, c3, c4]
+        
         let chartData = PieChartData(dataSet: chartDataSet)
+        pieChartLeft.frame = CGRect(x: 0, y: 0, width: 500, height: 500)
         pieChartLeft.transparentCircleColor = nil
+        pieChartLeft.holeColor = nil
+        //pieChartLeft.sizeToFit()
+        pieChartLeft.holeRadiusPercent = 0.7
+        //pieChartLeft.transparentCircleRadiusPercent = -10
+        
         pieChartLeft.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
         pieChartLeft.data = chartData
         pieChartLeft.chartDescription = nil
+        
+        
+        let myString = "Professional"
+        let myAttribute = [ NSForegroundColorAttributeName: UIColor.white ]
+        let myAttrString = NSMutableAttributedString(string: myString, attributes: myAttribute)
+        
+        let myStringB = "info 70%"
+        let myAttributeB = [ NSForegroundColorAttributeName: UIColor.blue ]
+        let myAttrStringB = NSAttributedString(string: myStringB, attributes: myAttributeB)
+        myAttrString.append(myAttrStringB)
+        
+        pieChartLeft.centerAttributedText = myAttrString
+        
     }
+    
+    
     
     
     func setChart(dataPoints: [String], values: [Double]) {
@@ -70,13 +92,21 @@ class ViewController: UIViewController {
         
         let chartDataSet = BarChartDataSet(values: dataEntries, label: nil)
         chartDataSet.form = .empty
+        
         chartDataSet.colors = [c1, c2, c3, c4]
         let chartData = BarChartData(dataSet: chartDataSet)
+        //barChartView.xAxis.labelPosition = .bottom
+        barChartView.scaleXEnabled = false
+        barChartView.scaleYEnabled = false
+        barChartView.highlighter = nil
+        barChartView.rightAxis.enabled = false
+        //barChartView.xAxis.drawGridLinesEnabled = false
+        barChartView.xAxis.enabled = false
         barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
         barChartView.data = chartData
         barChartView.chartDescription = nil
         barChartView.rightYAxisRenderer = YAxisRenderer(viewPortHandler: nil, yAxis: nil, transformer: nil)
-        barChartView.xAxisRenderer = XAxisRenderer(viewPortHandler: nil, xAxis: nil, transformer: nil)
+        //barChartView.xAxisRenderer = XAxisRenderer(viewPortHandler: nil, xAxis: nil, transformer: nil)
         
     }
     
