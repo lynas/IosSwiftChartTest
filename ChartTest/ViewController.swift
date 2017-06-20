@@ -61,16 +61,18 @@ class ViewController: UIViewController {
         pieChartLeft.chartDescription = nil
         
         
-        let myString = "Professional"
+        /*let myString = "Professional "
         let myAttribute = [ NSForegroundColorAttributeName: UIColor.white ]
         let myAttrString = NSMutableAttributedString(string: myString, attributes: myAttribute)
         
         let myStringB = "info 70%"
-        let myAttributeB = [ NSForegroundColorAttributeName: UIColor.blue ]
-        let myAttrStringB = NSAttributedString(string: myStringB, attributes: myAttributeB)
-        myAttrString.append(myAttrStringB)
+        //let myAttributeB = [ NSForegroundColorAttributeName: UIColor.blue , NSTextEffectAttributeName : .white ]
+        let myAttributeB = [ NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont(name: "AvenirNext-Medium", size: 22)!]
+        let myAttrStringB = NSAttributedString(string: myStringB, attributes: myAttributeB)*/
         
-        pieChartLeft.centerAttributedText = myAttrString
+        let str = "<style type=\"text/css\">#blue{color: #ffffff; font-weight: Bold; font-size: 12; text-align: center;} #percent{color: #ffffff;font-size: 15; text-align: center;}</style><div id=\"blue\">Professional</div><div id=\"blue\">info <span id=\"percent\">70%</span></div>".html2AttStr!
+        
+        pieChartLeft.centerAttributedText = str
         
     }
     
@@ -111,6 +113,12 @@ class ViewController: UIViewController {
     }
     
     
+}
+
+extension String {
+    var html2AttStr: NSAttributedString? {
+        return try? NSAttributedString(data: Data(utf8), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
+    }
 }
 
 extension UIColor {
