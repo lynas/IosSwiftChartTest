@@ -127,29 +127,49 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOR-jV-Gea" userLabel="pieContainer">
                                 <rect key="frame" x="0.0" y="408" width="375" height="259"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Isf-9g-hRV" customClass="PieChartView" customModule="Charts">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y2W-WF-eJo" userLabel="leftPieContainer">
                                         <rect key="frame" x="0.0" y="79" width="180" height="180"/>
-                                        <color key="backgroundColor" red="0.056482613086700439" green="0.44774305820465088" blue="0.51870405673980713" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Isf-9g-hRV" customClass="PieChartView" customModule="Charts">
+                                                <rect key="frame" x="0.0" y="0.0" width="220" height="220"/>
+                                                <color key="backgroundColor" red="0.056482613086700439" green="0.44774305820465088" blue="0.51870405673980713" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="180" id="m65-Dh-zMV"/>
-                                            <constraint firstAttribute="height" constant="180" id="t2f-Lt-Kkh"/>
+                                            <constraint firstItem="Isf-9g-hRV" firstAttribute="top" secondItem="Y2W-WF-eJo" secondAttribute="top" id="Kxk-nZ-TDg"/>
+                                            <constraint firstAttribute="trailing" secondItem="Isf-9g-hRV" secondAttribute="trailing" constant="-40" id="M7e-PI-NT7"/>
+                                            <constraint firstAttribute="height" constant="180" id="Ot1-i7-WLZ"/>
+                                            <constraint firstItem="Isf-9g-hRV" firstAttribute="leading" secondItem="Y2W-WF-eJo" secondAttribute="leading" id="Xoe-x9-M6V"/>
+                                            <constraint firstAttribute="bottom" secondItem="Isf-9g-hRV" secondAttribute="bottom" constant="-40" id="ZMy-fO-NzU"/>
+                                            <constraint firstAttribute="width" constant="180" id="gai-jd-YcB"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0PD-Ma-F51" userLabel="Pie Chart right" customClass="PieChartView" customModule="Charts">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iqC-zL-clm" userLabel="rightPieContainer">
                                         <rect key="frame" x="195" y="79" width="180" height="180"/>
-                                        <color key="backgroundColor" red="0.056482613086700439" green="0.44774305820465088" blue="0.51870405673980713" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0PD-Ma-F51" userLabel="Pie Chart right" customClass="PieChartView" customModule="Charts">
+                                                <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                                                <color key="backgroundColor" red="0.056482613086700439" green="0.44774305820465088" blue="0.51870405673980713" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="180" id="7BH-qr-MsC"/>
-                                            <constraint firstAttribute="height" constant="180" id="Nra-XY-R04"/>
+                                            <constraint firstAttribute="height" constant="180" id="2Bs-Zl-X5o"/>
+                                            <constraint firstItem="0PD-Ma-F51" firstAttribute="leading" secondItem="iqC-zL-clm" secondAttribute="leading" id="GQo-yy-0OD"/>
+                                            <constraint firstAttribute="width" constant="180" id="SP7-Wr-oBb"/>
+                                            <constraint firstAttribute="trailing" secondItem="0PD-Ma-F51" secondAttribute="trailing" id="ZEW-Sr-8mE"/>
+                                            <constraint firstAttribute="bottom" secondItem="0PD-Ma-F51" secondAttribute="bottom" id="q11-dn-7cN"/>
+                                            <constraint firstItem="0PD-Ma-F51" firstAttribute="top" secondItem="iqC-zL-clm" secondAttribute="top" id="y4X-5w-pXD"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.056482613086700439" green="0.44774305820465088" blue="0.51870405673980713" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="0PD-Ma-F51" secondAttribute="trailing" id="BFE-XD-Fkp"/>
-                                    <constraint firstAttribute="bottom" secondItem="Isf-9g-hRV" secondAttribute="bottom" id="SFh-x9-y6X"/>
-                                    <constraint firstItem="Isf-9g-hRV" firstAttribute="leading" secondItem="FOR-jV-Gea" secondAttribute="leading" id="lzf-dI-l7m"/>
-                                    <constraint firstAttribute="bottom" secondItem="0PD-Ma-F51" secondAttribute="bottom" id="p2v-79-Mvl"/>
+                                    <constraint firstItem="Y2W-WF-eJo" firstAttribute="leading" secondItem="FOR-jV-Gea" secondAttribute="leading" id="Ec5-Y7-Qel"/>
+                                    <constraint firstAttribute="trailing" secondItem="iqC-zL-clm" secondAttribute="trailing" id="F6N-2R-nRX"/>
+                                    <constraint firstAttribute="bottom" secondItem="iqC-zL-clm" secondAttribute="bottom" id="fF7-Z6-bkd"/>
+                                    <constraint firstAttribute="bottom" secondItem="Y2W-WF-eJo" secondAttribute="bottom" id="gLg-Pg-FQo"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -179,7 +199,15 @@
                     </view>
                     <connections>
                         <outlet property="barChartView" destination="AyM-wR-N3U" id="U3h-3o-Jx0"/>
+                        <outlet property="leftPieContainer" destination="Y2W-WF-eJo" id="hSQ-Rt-ezF"/>
                         <outlet property="pieChartLeft" destination="Isf-9g-hRV" id="1LK-CG-EZw"/>
+                        <outlet property="pieChartLeftContainerHeight" destination="Ot1-i7-WLZ" id="ovi-SU-mUA"/>
+                        <outlet property="pieChartLeftContainerWidth" destination="gai-jd-YcB" id="IxO-uw-j4T"/>
+                        <outlet property="pieChartRight" destination="0PD-Ma-F51" id="DkV-sv-ig7"/>
+                        <outlet property="pieChartRightContainerHeight" destination="2Bs-Zl-X5o" id="Cuh-PD-U95"/>
+                        <outlet property="pieChartRightContainerWidth" destination="SP7-Wr-oBb" id="RY2-6V-dgE"/>
+                        <outlet property="pieContainer" destination="FOR-jV-Gea" id="LKG-Rk-eLj"/>
+                        <outlet property="rightPieContainer" destination="iqC-zL-clm" id="VwF-Zt-Se9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
