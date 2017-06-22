@@ -20,6 +20,17 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var pieRightWidth: NSLayoutConstraint!
     @IBOutlet weak var pieRightHeight: NSLayoutConstraint!
+    @IBOutlet weak var profileLeft: NSLayoutConstraint!
+    @IBOutlet weak var syncTrail: NSLayoutConstraint!
+    @IBOutlet weak var barChartHeight: NSLayoutConstraint!
+    @IBOutlet weak var titleBarHeight: NSLayoutConstraint!
+    @IBOutlet weak var menuImgHeight: NSLayoutConstraint!
+    @IBOutlet weak var menuImgWidth: NSLayoutConstraint!
+    @IBOutlet weak var searchBGHeight: NSLayoutConstraint!
+    @IBOutlet weak var searchHostHeight: NSLayoutConstraint!
+    @IBOutlet weak var searchHostTop: NSLayoutConstraint!
+    @IBOutlet weak var overallStatHeight: NSLayoutConstraint!
+    @IBOutlet weak var statHeight: NSLayoutConstraint!
     
     
     
@@ -31,6 +42,18 @@ class ViewController: UIViewController {
         pieLeftHeight.constant = self.view.frame.width / 2
         pieRightWidth.constant = self.view.frame.width / 2
         pieRightHeight.constant = self.view.frame.width / 2
+        profileLeft.constant = self.view.frame.width * 7 / 100
+        syncTrail.constant = self.view.frame.width * 5 / 100
+        barChartHeight.constant = self.view.frame.width * 65 / 100
+        titleBarHeight.constant = self.view.frame.width * 10 / 100
+        menuImgHeight.constant = self.view.frame.width * 7 / 100
+        menuImgWidth.constant = self.view.frame.width * 7 / 100
+        searchBGHeight.constant = self.view.frame.width * 16 / 100
+        searchHostHeight.constant = self.view.frame.width * 12 / 100
+        searchHostTop.constant = self.view.frame.width * 2 / 100
+        overallStatHeight.constant = self.view.frame.width * 6 / 100
+        statHeight.constant = self.view.frame.width * 10 / 100
+        print("fs \(self.view.frame.width * 10 / 100)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,7 +132,7 @@ class ViewController: UIViewController {
         let secondLine = "<div id=\"secondLine\">is <span id=\"percent\">100%</span> Synced</div>"
         let str = "\(style)\(firstLine)\(secondLine)".html2AttStr!
         pieChartRight.centerAttributedText = str
-        print("fs \(self.view.frame.width * 5 / 100)")
+        
     }
     
     private func leftPieChartCenterTextDesign(){
