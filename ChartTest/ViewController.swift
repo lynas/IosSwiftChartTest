@@ -31,14 +31,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var searchHostTop: NSLayoutConstraint!
     @IBOutlet weak var overallStatHeight: NSLayoutConstraint!
     @IBOutlet weak var statHeight: NSLayoutConstraint!
-    
-    @IBOutlet weak var sv1: UIView!
-    @IBOutlet weak var sv1Width: NSLayoutConstraint!
-    @IBOutlet weak var sv2: UIView!
-    @IBOutlet weak var sv2Width: NSLayoutConstraint!
-    @IBOutlet weak var sv3: UIView!
-    @IBOutlet weak var sv3Width: NSLayoutConstraint!
-    @IBOutlet weak var arrowIcon: UIImageView!
+    @IBOutlet weak var statDetailView: UIScrollView!
     
     
     
@@ -64,15 +57,13 @@ class ViewController: UIViewController {
         statHeight.constant = self.view.frame.width * 10 / 100
         print("fs \(self.view.frame.width * 10 / 100)")
         
+        let infoView1 = InfoView(frame: statDetailView.frame, circleColor: UIColor(hex: 0x005C75), name: "Speciality", count: "764")
         
-        sv1Width.constant = self.view.frame.width / 2
-        sv2Width.constant = self.view.frame.width / 2
-        sv3Width.constant = self.view.frame.width / 2
+        statDetailView.addSubview(infoView1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         // let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0]
         // let marker : [Double] = [100, 200, 300, 400, 500, 600, 700, 800]
         
@@ -205,14 +196,14 @@ class ViewController: UIViewController {
     }
     
     
-    
-    
 }
+
 
 class InfoView : UIView {
     var circleColor:UIColor!
     var name : String!
     var count : String!
+    var originPoint : CGFloat = 5.0
     
     init(frame: CGRect, circleColor:UIColor, name:String, count:String) {
         super.init(frame: frame)
@@ -227,9 +218,28 @@ class InfoView : UIView {
     }
     
     func setLayout(){
-        let circleView : UIView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 60.0))
-        circleFilledWithOutline(circleView: circleView, fillColor: UIColor.red, outlineColor: UIColor.red)
+        let frameHeight = self.frame.height
+        print("FF : \(self.frame.width)----\(self.frame.height)")
+        let circleView : UIView = UIView(frame: CGRect(x: 5.0, y: (frameHeight * 30 / 100) , width: frameHeight / 2, height: frameHeight / 2))
+        circleFilledWithOutline(circleView: circleView, fillColor: circleColor, outlineColor: circleColor)
         addSubview(circleView)
+        originPoint = originPoint + (frameHeight / 2 ) + 10
+        let ss : CGFloat = CGFloat(self.name.characters.count)
+        let nameLabel : UILabel = UILabel(frame:
+            CGRect(x: originPoint, y: (frameHeight * 30 / 100), width: (ss * 8), height: frameHeight / 2))
+        //nameLabel.backgroundColor = UIColor.blue
+        nameLabel.text = name
+        nameLabel.textColor = UIColor.white
+        addSubview(nameLabel)
+        originPoint = originPoint + (ss * 8)
+        let countLabel : UILabel = UILabel(frame:
+            CGRect(x: originPoint, y: (frameHeight * 30 / 100), width: CGFloat(count.characters.count) * 12, height: frameHeight / 2))
+        countLabel.font = UIFont(name: "Roboto-Bold", size: 14)
+        countLabel.text = count
+        countLabel.textColor = UIColor.white
+        //countLabel.backgroundColor = UIColor.red
+        addSubview(countLabel)
+
     }
     func circleFilledWithOutline(circleView: UIView, fillColor: UIColor, outlineColor:UIColor) {
         let circleLayer = CAShapeLayer()
@@ -263,5 +273,3 @@ extension UIColor {
         self.init(red: components.R, green: components.G, blue: components.B, alpha: 1)
     }
 }
-
-

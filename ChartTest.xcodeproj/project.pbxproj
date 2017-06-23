@@ -13,6 +13,7 @@
 		FC2A9AE51EF3DDB800537BEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC2A9AE31EF3DDB800537BEA /* Main.storyboard */; };
 		FC2A9AE71EF3DDB800537BEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC2A9AE61EF3DDB800537BEA /* Assets.xcassets */; };
 		FC2A9AEA1EF3DDB800537BEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC2A9AE81EF3DDB800537BEA /* LaunchScreen.storyboard */; };
+		FC2C680E1EFD45D9001515FF /* Roboto in Resources */ = {isa = PBXBuildFile; fileRef = FC2C680D1EFD45D9001515FF /* Roboto */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		FC2A9AE61EF3DDB800537BEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC2A9AE91EF3DDB800537BEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC2A9AEB1EF3DDB800537BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC2C680D1EFD45D9001515FF /* Roboto */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Roboto; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 		FC2A9ADE1EF3DDB800537BEA /* ChartTest */ = {
 			isa = PBXGroup;
 			children = (
+				FC2C680C1EFD45C9001515FF /* Fonts */,
 				FC2A9ADF1EF3DDB800537BEA /* AppDelegate.swift */,
 				FC2A9AE11EF3DDB800537BEA /* ViewController.swift */,
 				FC2A9AE31EF3DDB800537BEA /* Main.storyboard */,
@@ -86,6 +89,14 @@
 				FC2A9AEB1EF3DDB800537BEA /* Info.plist */,
 			);
 			path = ChartTest;
+			sourceTree = "<group>";
+		};
+		FC2C680C1EFD45C9001515FF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FC2C680D1EFD45D9001515FF /* Roboto */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +165,7 @@
 				FC2A9AEA1EF3DDB800537BEA /* LaunchScreen.storyboard in Resources */,
 				FC2A9AE71EF3DDB800537BEA /* Assets.xcassets in Resources */,
 				FC2A9AE51EF3DDB800537BEA /* Main.storyboard in Resources */,
+				FC2C680E1EFD45D9001515FF /* Roboto in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
