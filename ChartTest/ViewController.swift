@@ -32,6 +32,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var overallStatHeight: NSLayoutConstraint!
     @IBOutlet weak var statHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var sv1: UIView!
+    @IBOutlet weak var sv1Width: NSLayoutConstraint!
+    @IBOutlet weak var sv2: UIView!
+    @IBOutlet weak var sv2Width: NSLayoutConstraint!
+    @IBOutlet weak var sv3: UIView!
+    @IBOutlet weak var sv3Width: NSLayoutConstraint!
+    @IBOutlet weak var arrowIcon: UIImageView!
+    
+    
     
     
     var months: [String]!
@@ -54,15 +63,25 @@ class ViewController: UIViewController {
         overallStatHeight.constant = self.view.frame.width * 6 / 100
         statHeight.constant = self.view.frame.width * 10 / 100
         print("fs \(self.view.frame.width * 10 / 100)")
+        
+        
+        sv1Width.constant = self.view.frame.width / 2
+        sv2Width.constant = self.view.frame.width / 2
+        sv3Width.constant = self.view.frame.width / 2
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0]
+        
+        // let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0]
+        // let marker : [Double] = [100, 200, 300, 400, 500, 600, 700, 800]
+        
+        let marker : [Double] = [10.0, 20, 30, 70, 80, 90, 100, 200, 300, 400]
+        
         let unitsSoldLp = [20, 40, 10, 20, 10.0]
         let unitsSoldRp = [100.0]
         
-        setBarChart(values: unitsSold)
+        setBarChart(marker: marker)
         setPieChartLeft(values: unitsSoldLp)
         setPieChartRight(values: unitsSoldRp)
         
@@ -149,12 +168,12 @@ class ViewController: UIViewController {
         pieChartLeft.centerAttributedText = str
     }
     
-    func setBarChart(values: [Double]) {
+    func setBarChart(marker : [Double]) {
         barChartView.noDataText = ""
+        
         var dataEntries: [BarChartDataEntry] = []
-        let marker : [Double] = [100, 200, 300, 400, 500, 600, 700, 800]
-        for i in 0..<7 {
-            let dataEntry = BarChartDataEntry(x: values[i], y: marker[i])
+        for i in 0..<marker.count {
+            let dataEntry = BarChartDataEntry(x: Double(i), y: marker[i])
             dataEntries.append(dataEntry)
         }
         let c1 = UIColor(hex: 0x3EC1C1)
@@ -167,6 +186,7 @@ class ViewController: UIViewController {
         
         chartDataSet.colors = [c1, c2, c3, c4]
         let chartData = BarChartData(dataSet: chartDataSet)
+        chartData.barWidth = 0.4
         //barChartView.xAxis.labelPosition = .bottom
         barChartView.scaleXEnabled = false
         barChartView.scaleYEnabled = false
@@ -185,6 +205,46 @@ class ViewController: UIViewController {
     }
     
     
+    
+    
+}
+
+class InfoView : UIView {
+    var circleColor:UIColor!
+    var name : String!
+    var count : String!
+    
+    init(frame: CGRect, circleColor:UIColor, name:String, count:String) {
+        super.init(frame: frame)
+        self.circleColor = circleColor
+        self.name = name
+        self.count = count
+        setLayout()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setLayout(){
+        let circleView : UIView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 60.0))
+        circleFilledWithOutline(circleView: circleView, fillColor: UIColor.red, outlineColor: UIColor.red)
+        addSubview(circleView)
+    }
+    func circleFilledWithOutline(circleView: UIView, fillColor: UIColor, outlineColor:UIColor) {
+        let circleLayer = CAShapeLayer()
+        let width = Double(circleView.bounds.size.width);
+        let height = Double(circleView.bounds.size.height);
+        circleLayer.bounds = CGRect(x: 2.0, y: 2.0, width: width-2.0, height: height-2.0)
+        circleLayer.position = CGPoint(x: width/2, y: height/2);
+        let rect = CGRect(x: 2.0, y: 2.0, width: width-2.0, height: height-2.0)
+        let path = UIBezierPath.init(ovalIn: rect)
+        circleLayer.path = path.cgPath
+        circleLayer.fillColor = fillColor.cgColor
+        circleLayer.strokeColor = outlineColor.cgColor
+        circleLayer.lineWidth = 2.0
+        circleView.layer.addSublayer(circleLayer)
+    }
 }
 
 extension String {
@@ -203,3 +263,5 @@ extension UIColor {
         self.init(red: components.R, green: components.G, blue: components.B, alpha: 1)
     }
 }
+
+
