@@ -57,9 +57,16 @@ class ViewController: UIViewController {
         statHeight.constant = self.view.frame.width * 10 / 100
         print("fs \(self.view.frame.width * 10 / 100)")
         
-        let infoView1 = InfoView(frame: statDetailView.frame, circleColor: UIColor(hex: 0x005C75), name: "Speciality", count: "764")
-        
+        let infoView1 = InfoView(frame: statDetailView.frame, circleColor: UIColor(hex: 0x005C75), name: "Speciality", count: "764", originPoint: 5.0)
         statDetailView.addSubview(infoView1)
+        print("--------------------------\(infoView1.frame.width)")
+        let infoView2 = InfoView(frame: statDetailView.frame, circleColor: UIColor(hex: 0x005C75), name: "Speciality", count: "764", originPoint: 150.0 )
+        statDetailView.addSubview(infoView2)
+        let infoView3 = InfoView(frame: statDetailView.frame, circleColor: UIColor(hex: 0x005C75), name: "Speciality", count: "764", originPoint: 300.0 )
+        statDetailView.addSubview(infoView3)
+        let infoView4 = InfoView(frame: statDetailView.frame, circleColor: UIColor(hex: 0x005C75), name: "Speciality", count: "764", originPoint: 450.0 )
+        statDetailView.addSubview(infoView4)
+        statDetailView.isScrollEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -205,11 +212,12 @@ class InfoView : UIView {
     var count : String!
     var originPoint : CGFloat = 5.0
     
-    init(frame: CGRect, circleColor:UIColor, name:String, count:String) {
+    init(frame: CGRect, circleColor:UIColor, name:String, count:String, originPoint:CGFloat) {
         super.init(frame: frame)
         self.circleColor = circleColor
         self.name = name
         self.count = count
+        self.originPoint = originPoint
         setLayout()
     }
     
@@ -220,18 +228,23 @@ class InfoView : UIView {
     func setLayout(){
         let frameHeight = self.frame.height
         print("FF : \(self.frame.width)----\(self.frame.height)")
-        let circleView : UIView = UIView(frame: CGRect(x: 5.0, y: (frameHeight * 30 / 100) , width: frameHeight / 2, height: frameHeight / 2))
+        
+        
+        let circleView : UIView = UIView(frame: CGRect(x: originPoint, y: (frameHeight * 30 / 100) , width: frameHeight / 2, height: frameHeight / 2))
         circleFilledWithOutline(circleView: circleView, fillColor: circleColor, outlineColor: circleColor)
         addSubview(circleView)
         originPoint = originPoint + (frameHeight / 2 ) + 10
-        let ss : CGFloat = CGFloat(self.name.characters.count)
+        let labelName : CGFloat = CGFloat(self.name.characters.count)
         let nameLabel : UILabel = UILabel(frame:
-            CGRect(x: originPoint, y: (frameHeight * 30 / 100), width: (ss * 8), height: frameHeight / 2))
+            CGRect(x: originPoint, y: (frameHeight * 30 / 100), width: (labelName * 8), height: frameHeight / 2))
         //nameLabel.backgroundColor = UIColor.blue
         nameLabel.text = name
         nameLabel.textColor = UIColor.white
         addSubview(nameLabel)
-        originPoint = originPoint + (ss * 8)
+        
+        
+        
+        originPoint = originPoint + (labelName * 8)
         let countLabel : UILabel = UILabel(frame:
             CGRect(x: originPoint, y: (frameHeight * 30 / 100), width: CGFloat(count.characters.count) * 12, height: frameHeight / 2))
         countLabel.font = UIFont(name: "Roboto-Bold", size: 14)
