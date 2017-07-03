@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -58,14 +57,14 @@
                                     <constraint firstItem="0nW-sz-ImM" firstAttribute="centerY" secondItem="ztQ-QZ-xnD" secondAttribute="centerY" id="wfH-9M-A9P"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ST7-3b-gB7">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ST7-3b-gB7" userLabel="SearchContainer">
                                 <rect key="frame" x="0.0" y="75" width="375" height="65"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddB-1X-PMg" userLabel="searchBarBG">
-                                        <rect key="frame" x="8" y="12" width="359" height="39"/>
+                                        <rect key="frame" x="12" y="12" width="351" height="30"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Doctor Searh..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iPT-EC-9Rk">
-                                                <rect key="frame" x="4" y="4" width="351" height="31"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Doctor Search..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iPT-EC-9Rk">
+                                                <rect key="frame" x="4" y="4" width="343" height="22"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -73,7 +72,7 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.44804012775421143" green="0.76377648115158081" blue="0.78155046701431274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="39" id="CNu-yd-XVj"/>
+                                            <constraint firstAttribute="height" constant="30" id="CNu-yd-XVj"/>
                                             <constraint firstAttribute="bottom" secondItem="iPT-EC-9Rk" secondAttribute="bottom" constant="4" id="QKU-AR-Mtr"/>
                                             <constraint firstAttribute="trailing" secondItem="iPT-EC-9Rk" secondAttribute="trailing" constant="4" id="aNS-V8-pIZ"/>
                                             <constraint firstItem="iPT-EC-9Rk" firstAttribute="leading" secondItem="ddB-1X-PMg" secondAttribute="leading" constant="4" id="jFz-97-60B"/>
@@ -83,8 +82,8 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.093937821686267853" green="0.62865763902664185" blue="0.65842390060424805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="ddB-1X-PMg" firstAttribute="leading" secondItem="ST7-3b-gB7" secondAttribute="leading" constant="8" id="QiZ-YZ-Wxh"/>
-                                    <constraint firstAttribute="trailing" secondItem="ddB-1X-PMg" secondAttribute="trailing" constant="8" id="b2L-En-6uI"/>
+                                    <constraint firstItem="ddB-1X-PMg" firstAttribute="leading" secondItem="ST7-3b-gB7" secondAttribute="leading" constant="12" id="QiZ-YZ-Wxh"/>
+                                    <constraint firstAttribute="trailing" secondItem="ddB-1X-PMg" secondAttribute="trailing" constant="12" id="b2L-En-6uI"/>
                                     <constraint firstItem="ddB-1X-PMg" firstAttribute="top" secondItem="ST7-3b-gB7" secondAttribute="top" constant="12" id="sTN-oM-2OP"/>
                                     <constraint firstAttribute="height" constant="65" id="xYw-BB-ptV"/>
                                 </constraints>

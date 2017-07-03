@@ -50,9 +50,9 @@ class ViewController: UIViewController {
         titleBarHeight.constant = self.view.frame.width * 10 / 100
         menuImgHeight.constant = self.view.frame.width * 7 / 100
         menuImgWidth.constant = self.view.frame.width * 7 / 100
-        searchBGHeight.constant = self.view.frame.width * 16 / 100
-        searchHostHeight.constant = self.view.frame.width * 12 / 100
-        searchHostTop.constant = self.view.frame.width * 2 / 100
+        searchBGHeight.constant = self.view.frame.width * 18 / 100
+        searchHostHeight.constant = self.view.frame.width * 8 / 100
+        searchHostTop.constant = self.view.frame.width * 5 / 100
         overallStatHeight.constant = self.view.frame.width * 6 / 100
         statHeight.constant = self.view.frame.width * 10 / 100
         print("fs \(self.view.frame.width * 10 / 100)")
