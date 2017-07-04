@@ -35,6 +35,12 @@ class ViewController: UIViewController {
     
     
     
+    @IBOutlet weak var scv1: UIView!
+    @IBOutlet weak var scv1width: NSLayoutConstraint!
+    
+    
+    
+    
     
     var months: [String]!
     
@@ -57,16 +63,25 @@ class ViewController: UIViewController {
         statHeight.constant = self.view.frame.width * 10 / 100
         print("fs \(self.view.frame.width * 10 / 100)")
         
-        let infoView1 = InfoView(frame: statDetailView.frame, circleColor: UIColor(hex: 0x005C75), name: "Speciality", count: "764", originPoint: 5.0)
-        statDetailView.addSubview(infoView1)
-        print("--------------------------\(infoView1.frame.width)")
-        let infoView2 = InfoView(frame: statDetailView.frame, circleColor: UIColor(hex: 0x005C75), name: "Speciality", count: "764", originPoint: 150.0 )
-        statDetailView.addSubview(infoView2)
-        let infoView3 = InfoView(frame: statDetailView.frame, circleColor: UIColor(hex: 0x005C75), name: "Speciality", count: "764", originPoint: 300.0 )
-        statDetailView.addSubview(infoView3)
-        let infoView4 = InfoView(frame: statDetailView.frame, circleColor: UIColor(hex: 0x005C75), name: "Speciality", count: "764", originPoint: 450.0 )
-        statDetailView.addSubview(infoView4)
-        statDetailView.isScrollEnabled = true
+        let infoView1 = InfoView(frame: scv1.frame, circleColor: UIColor(hex: 0x005C75), name: "Speciality", count: "764", originPoint: 5.0)
+        let infoView2 = InfoView(frame: scv1.frame, circleColor: UIColor(hex: 0x005C75), name: "Doctor", count: "555",
+                                 originPoint: calculateWidth(name: "Speciality",naumber: "764"))
+        //statDetailView.addSubview(infoView2)
+        //let infoView3 = InfoView(frame: scv3.frame, circleColor: UIColor(hex: 0x005C75), name: "Patient", count: "666")
+        //statDetailView.addSubview(infoView3)
+        //let infoView4 = InfoView(frame: scv4.frame, circleColor: UIColor(hex: 0x005C75), name: "Speciality", count: "764")
+        //statDetailView.addSubview(infoView4)
+        //statDetailView.isScrollEnabled = true
+        scv1width.constant = calculateWidth(name: "Speciality",naumber: "764")
+        //scv2width.constant = 170.0
+        //scv3width.constant = 170.0
+        scv1.addSubview(infoView1)
+        scv1.addSubview(infoView2)
+        //scv2.addSubview(infoView2)
+        //scv3.addSubview(infoView3)
+        
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -202,6 +217,12 @@ class ViewController: UIViewController {
         
     }
     
+    func calculateWidth(name:String, naumber:String = "") -> CGFloat {
+        let nameWidth = name.widthOfString(usingFont: UIFont(name: "Roboto", size: 16.0)!)
+        let naumberWidth = name.widthOfString(usingFont: UIFont(name: "Roboto-Bold", size: 16.0)!)
+        return nameWidth +  naumberWidth + 30
+    }
+    
     
 }
 
@@ -212,7 +233,7 @@ class InfoView : UIView {
     var count : String!
     var originPoint : CGFloat = 5.0
     
-    init(frame: CGRect, circleColor:UIColor, name:String, count:String, originPoint:CGFloat) {
+    init(frame: CGRect, circleColor:UIColor, name:String, count:String, originPoint : CGFloat) {
         super.init(frame: frame)
         self.circleColor = circleColor
         self.name = name
@@ -230,21 +251,23 @@ class InfoView : UIView {
         print("FF : \(self.frame.width)----\(self.frame.height)")
         
         
-        let circleView : UIView = UIView(frame: CGRect(x: originPoint, y: (frameHeight * 30 / 100) , width: frameHeight / 2, height: frameHeight / 2))
-        circleFilledWithOutline(circleView: circleView, fillColor: circleColor, outlineColor: circleColor)
-        addSubview(circleView)
-        originPoint = originPoint + (frameHeight / 2 ) + 10
-        let labelName : CGFloat = CGFloat(self.name.characters.count)
+        let circleIconView : UIView = UIView(frame: CGRect(x: originPoint, y: (frameHeight * 40 / 100) , width: frameHeight / 3, height: frameHeight / 3))
+        circleFilledWithOutline(circleView: circleIconView, fillColor: circleColor, outlineColor: circleColor)
+        addSubview(circleIconView)
+        
+        
+        originPoint = originPoint + (frameHeight / 2 )
+        let fntWidth = name.widthOfString(usingFont: UIFont(name: "Roboto", size: 16.0)!)
         let nameLabel : UILabel = UILabel(frame:
-            CGRect(x: originPoint, y: (frameHeight * 30 / 100), width: (labelName * 8), height: frameHeight / 2))
-        //nameLabel.backgroundColor = UIColor.blue
+            CGRect(x: originPoint, y: (frameHeight * 30 / 100), width: fntWidth, height: frameHeight / 2))
+        nameLabel.font = UIFont(name: "Roboto", size: 16.0)!
         nameLabel.text = name
         nameLabel.textColor = UIColor.white
         addSubview(nameLabel)
         
         
         
-        originPoint = originPoint + (labelName * 8)
+        originPoint = originPoint + fntWidth + 5
         let countLabel : UILabel = UILabel(frame:
             CGRect(x: originPoint, y: (frameHeight * 30 / 100), width: CGFloat(count.characters.count) * 12, height: frameHeight / 2))
         countLabel.font = UIFont(name: "Roboto-Bold", size: 14)
@@ -273,6 +296,21 @@ class InfoView : UIView {
 extension String {
     var html2AttStr: NSAttributedString? {
         return try? NSAttributedString(data: Data(utf8), options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
+    }
+}
+
+extension String {
+    
+    func widthOfString(usingFont font: UIFont) -> CGFloat {
+        let fontAttributes = [NSFontAttributeName: font]
+        let size = self.size(attributes: fontAttributes)
+        return size.width
+    }
+    
+    func heightOfString(usingFont font: UIFont) -> CGFloat {
+        let fontAttributes = [NSFontAttributeName: font]
+        let size = self.size(attributes: fontAttributes)
+        return size.height
     }
 }
 
